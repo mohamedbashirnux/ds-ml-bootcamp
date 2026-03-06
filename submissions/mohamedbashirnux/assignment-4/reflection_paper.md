@@ -9,9 +9,9 @@ I trained two models: Linear Regression and Random Forest (100 trees). Both mode
 
 ## 2. Model Comparison
 
-Random Forest performed better than Linear Regression across all metrics. Random Forest achieved higher R² (better fit) and lower MAE/RMSE (smaller errors). This shows Random Forest captures non-linear patterns better than Linear Regression.
+In the 3 sanity checks, predictions differed between models. Random Forest gave more realistic results because it captures non-linear patterns in house prices.
 
-Linear Regression assumes linear relationships between features and price, which may not hold for real estate data. Random Forest handles complex interactions between features like location, size, and age more effectively.
+For example, adding a bedroom might increase price differently in different locations. Random Forest understands these complex interactions better than Linear Regression, which assumes straight-line relationships. Real estate prices don't follow simple formulas - they have jumps and patterns that Random Forest can detect.
 
 ## 3. Random Forest Explanation
 

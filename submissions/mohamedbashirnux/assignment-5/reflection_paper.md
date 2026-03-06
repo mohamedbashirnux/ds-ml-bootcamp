@@ -11,9 +11,11 @@ I trained three models: Logistic Regression, Random Forest (200 trees), and Naiv
 
 ## 2. Model Comparison
 
-Random Forest achieved the highest accuracy (98.3%) and best recall (87.2%), meaning it caught more spam messages. Naive Bayes had good accuracy (97.7%) with 82.6% recall. Logistic Regression had the lowest recall (75.8%) but still performed well overall.
+In the 3 sanity check messages, the models mostly agreed but had some differences. For the message "Free entry in 2 a weekly competition!", Naive Bayes correctly identified it as spam while Logistic Regression and Random Forest were more cautious and marked it as ham.
 
-For spam detection, recall is critical because missing spam (false negatives) is worse than flagging legitimate emails (false positives). Random Forest's higher recall makes it the best choice for this task.
+For "I will meet you at the cafe tomorrow", all three models agreed it was ham (legitimate email). For "Congratulations, you won a free ticket", all models marked it as ham, even though it has spam-like words.
+
+Naive Bayes gave more realistic predictions for obvious spam because it's trained to recognize spam word patterns like "free", "win", and "congratulations". The other models are more conservative to avoid false positives (blocking real emails that users need).
 
 ## 3. Naive Bayes Explanation
 
@@ -23,13 +25,17 @@ MultinomialNB works well for text classification because it handles word counts 
 
 ## 4. Metrics Discussion
 
-- Accuracy: Overall correctness. Good for balanced datasets.
+- Accuracy: Overall correctness. Shows how many predictions were right out of total.
 - Precision: Of predicted spam, how many are actually spam. High precision means fewer false alarms.
 - Recall: Of actual spam, how many did we catch. High recall means fewer missed spam.
 - F1-Score: Balance between precision and recall. Useful when both matter.
-- Confusion Matrix: Shows true positives, false positives, true negatives, false negatives.
+- Confusion Matrix: Shows the breakdown of predictions.
 
-For spam detection, recall is most important because users want to catch all spam. Precision matters too since false positives annoy users. F1-Score helps balance both concerns.
+The Confusion Matrix tells us about mistakes:
+- False Positives: Good emails wrongly marked as spam (bad - users miss important emails)
+- False Negatives: Spam emails that got through to inbox (annoying - users see junk)
+
+My models had zero false positives (perfect precision of 100%), meaning they never blocked legitimate emails. However, they had some false negatives (19-36 spam messages got through). This is the safer approach - better to let some spam through than block real emails.
 
 ## 5. Findings
 
